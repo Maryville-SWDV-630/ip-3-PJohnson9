@@ -1,9 +1,9 @@
 # Patrick Johnson         3/25/2020 #
 # SWDV 630 3W 20/SP2         Week 3 #
 #####################################
-# Code a generic superclass and at least three subclasses
-# of that superclass, each class needs to have at least
-# 2 attributes and 2 methods.
+# Code a generic superclass and at least three subclasses of that superclass,
+# each class needs to have at least 2 attributes and 2 methods.
+# You need to provide a test method that shows your classes in operation.
 
 class Superclass:
     def __init__(self, members):
@@ -15,10 +15,20 @@ class SubclassA(Superclass):
 
 
 
-class SubclassB(superclass):
+
+
+class SubclassB(Superclass):
     pass
 
 
 
-class SubclassC(superclass):
+class SubclassC(Superclass):
     pass
+
+
+def main():
+    print("Hello")
+
+
+if __name__=="__main__":
+    main()
