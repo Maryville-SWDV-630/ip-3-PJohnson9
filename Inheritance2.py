@@ -1,3 +1,4 @@
+# Print Statements updated for Python 3
 class Spell:
   def __init__(self, incantation, name):
     self.name = name
