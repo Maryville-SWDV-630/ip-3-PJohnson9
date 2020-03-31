@@ -6,31 +6,34 @@
 from SaleItem import SaleItem
 
 class HourlyItem(SaleItem):
-    def __init__(self, Description, Quantity, UnitCost, Details = ''):
+    def __init__(self, Description, Quantity, HourlyRate, Details = ''):
         self.Description = Description
         self.Quantity = Quantity
-        self.UnitCost = UnitCost
+        self.UnitCost = HourlyRate
         self.Details = Details
         
-    def get_Tax(self):
-        return round(self.Quantity * self.UnitCost * self.TaxRate,2)
+    def get_HourlyRate(self):
+        return self.UnitCost
+    
+    def set_HourlyRate(self, value):
+        self.UnitCost = value
+        
+    HourlyRate = property(get_HourlyRate, set_HourlyRate)
     
     def get_Summary(self):
         if (self.Details == ''):
-            return "{}, {} hr. @ {}/hr".format(self.Description,
-                                 self.Quantity, self.UnitCost)
+            return "{} hr @ {}/hr".format(self.Quantity, self.HourlyRate)
         else:
-            return "{}, {}, {} hr. @ {}/hr".format(self.Description,
-                   self.Details, self.Quantity, self.UnitCost)
+            return "{}, {} hr. @ {}/hr".format(self.Details, self.Quantity, self.HourlyRate)
  
 
 def test():
-    item = HourlyItem("Sample Hourly Service", 5, 5.75)
-    print(item.Description)
-    print(item.Quantity)
-    print(item.get_Total())
+    item = HourlyItem("Sample Hourly Service", 2, 25, "Doing something")
+    print(item.Details)
+    print(item.HourlyRate)
+    item.set_HourlyRate(22.50)
+    print(item.get_HourlyRate())
     print(item.get_Summary())
-
 
 
 if __name__=="__main__":

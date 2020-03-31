@@ -12,13 +12,16 @@ class SaleItem:
         self.Description = Description
         self.Quantity = Quantity
         self.UnitCost = UnitCost
+        self.Tax = 0
     
     def get_Total(self):
         return round(self.Quantity * self.UnitCost,2)
-    
+        
     def get_Summary(self):
-        return "{}, {} @ {} ea.".format(self.Description,
-                                self.Quantity, self.UnitCost)
+        return "{} @ {} ea.".format(self.Quantity, self.UnitCost)
+    
+    Total = property(get_Total, None, None, "LineItem Total Without Tax")
+    Summary = property(get_Summary)
 
 
 def test():
@@ -28,6 +31,6 @@ def test():
     print(item.get_Total())
     print(item.get_Summary())
 
-
 if __name__=="__main__":
     test()
+    
