@@ -18,7 +18,7 @@ class SaleItem:
         return round(self.Quantity * self.UnitCost,2)
         
     def get_Summary(self):
-        return "{} @ {} ea.".format(self.Quantity, self.UnitCost)
+        return "{} @ {:.2f} ea.".format(self.Quantity, self.UnitCost)
     
     Total = property(get_Total, None, None, "LineItem Total Without Tax")
     Summary = property(get_Summary)

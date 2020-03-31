@@ -11,27 +11,36 @@ class FlatFeeItem(SaleItem):
         self.Quantity = Quantity
         self.UnitCost = UnitCost
         self.Details = Details
+        self._DiscountPercent = 0
             
     def set_DiscountPercent(self, value):
-        self._DiscountPercent = value)
+        self._DiscountPercent = value
         
     def get_DiscountPercent(self):
         return self._DiscountPercent
     
+    def set_UnitCost(self, value):
+        self._UnitCost = value
+    
+    def get_UnitCost(self):
+        return self._UnitCost * (100 - self.DiscountPercent)/100
+    
     DiscountPercent = property(get_DiscountPercent, set_DiscountPercent)
+    UnitCost = property(get_UnitCost, set_UnitCost)
     
     def get_Summary(self):
         if (self.Details == ''):
-            return "{} @ {} ea.".format(self.Quantity, self.UnitCost)
+            return "{} @ {:.2f} ea.".format(self.Quantity, self.UnitCost)
         else:
-            return "{}, {} @ {} ea.".format(self.Details, self.Quantity, self.UnitCost)
+            return "{}, {} @ {:.2f} ea.".format(self.Details, self.Quantity, self.UnitCost)
  
 
 def test():
     item = FlatFeeItem("Flat Rate Service", 2, 75)
-    print(item.Description)
-    print(item.Quantity)
-    print(item.get_Total())
+    print(item.get_UnitCost())
+    item.DiscountPercent = 20.0
+    print(item.DiscountPercent)
+    print(item.UnitCost)
     print(item.get_Summary())
     
 if __name__=="__main__":

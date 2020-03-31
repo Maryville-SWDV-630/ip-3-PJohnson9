@@ -22,9 +22,9 @@ class HourlyItem(SaleItem):
     
     def get_Summary(self):
         if (self.Details == ''):
-            return "{} hr @ {}/hr".format(self.Quantity, self.HourlyRate)
+            return "{} hr @ {:.2f}/hr".format(self.Quantity, self.HourlyRate)
         else:
-            return "{}, {} hr. @ {}/hr".format(self.Details, self.Quantity, self.HourlyRate)
+            return "{}, {} hr. @ {:.2f}/hr".format(self.Details, self.Quantity, self.HourlyRate)
  
 
 def test():

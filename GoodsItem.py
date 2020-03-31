@@ -20,9 +20,9 @@ class GoodsItem(SaleItem):
     
     def get_Summary(self):
         if (self.Details == ''):
-            return "{} @ {} ea.".format(self.Quantity, self.UnitCost)
+            return "{} @ {:.2f} ea.".format(self.Quantity, self.UnitCost)
         else:
-            return "{}, {} @ {} ea.".format(self.Details, self.Quantity, self.UnitCost)
+            return "{}, {} @ {:.2f} ea.".format(self.Details, self.Quantity, self.UnitCost)
         
 def test():
     item = GoodsItem("Sample Good", 5, 5.75, 'Green, Size 00')
