@@ -12,6 +12,14 @@ class FlatFeeItem(SaleItem):
         self.UnitCost = UnitCost
         self.Details = Details
             
+    def set_DiscountPercent(self, value):
+        self._DiscountPercent = value)
+        
+    def get_DiscountPercent(self):
+        return self._DiscountPercent
+    
+    DiscountPercent = property(get_DiscountPercent, set_DiscountPercent)
+    
     def get_Summary(self):
         if (self.Details == ''):
             return "{} @ {} ea.".format(self.Quantity, self.UnitCost)
